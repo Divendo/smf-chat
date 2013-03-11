@@ -50,7 +50,7 @@ header("Expires: Sat, 22 Apr 1995 13:37:00 GMT");
                         </div> <!-- end #noscript_title -->
                         <div id="noscript_message" class="other_message">
                             <p>Zorg ervoor dat JavaScript ingeschakeld is en herlaad deze pagina. Als u niet weet hoe dat moet kunt u <a href="http://www.enable-javascript.com/nl/">deze website</a> raadplegen.</p>
-                            <p>Misschien ondersteunt uw huidige browser geen JavaScript, in dat geval moet u een moderner webbrowser installeren. Hieronder zijn de vijf meest populaire, gratis webbrowsers in willekeurige volgorde weergegeven. Klik op het icoontje om naar de bijbehorende download pagina te gaan en volg de instructies op om het browser te installeren.</p>
+                            <p>Misschien ondersteunt uw huidige browser geen JavaScript, in dat geval moet u een moderner webbrowser installeren. Hieronder zijn de vijf meest populaire, gratis webbrowsers in willekeurige volgorde weergegeven. Klik op het icoontje om naar de bijbehorende download pagina te gaan en volg de instructies op om de browser te installeren.</p>
                             <div id="browsers">
                                 <?php
                                 // just a 'lil something to keep the haters from hatin' :)

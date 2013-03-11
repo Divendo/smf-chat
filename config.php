@@ -11,11 +11,11 @@
 require_once '../SSI.php';
 require_once 'Database.class.php';
 
-// mysql credentials
-$config['mysql_host']       = '';  			// mysql host
-$config['mysql_user']       = '';  			// mysql username
+// mysql credentials (note: these are for a localhost test server)
+$config['mysql_host']       = 'localhost';  // mysql host
+$config['mysql_user']       = 'root';  		// mysql username
 $config['mysql_pass']       = '';  			// mysql password
-$config['mysql_db']         = '';  			// mysql database
+$config['mysql_db']         = 'smftest';  	// mysql database
 $config['mysql_port']       = 3306;         // mysql port (default 3306)
 $config['mysql_charset']    = 'utf8';       // mysql charset (e.g. 'utf8')
 

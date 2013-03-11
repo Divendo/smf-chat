@@ -128,7 +128,7 @@ function chatAjaxErrorHandler(jqXHR, textStatus, errorThrown) {
     }
     
     // log error
-    console.log('jQuery.ajax() failed. textStatus: \'' + textStatus + '\', errorThrown: \'' + errorThrown + '\'');
+    console.error('jQuery.ajax() failed. textStatus: \'' + textStatus + '\', errorThrown: \'' + errorThrown + '\'');
 }
 
 // before send
@@ -502,7 +502,7 @@ function chatHandleEventUpdate(events) {
                 str += '<div class="msg_content">' + chatParseMessage(events[i].content) + '</div></div>';
                 break;
             default:
-                console.log('chatHandleEventUpdate(): Unknown event type');
+                console.warn('chatHandleEventUpdate(): Unknown event type');
                 break;
         }
     }
