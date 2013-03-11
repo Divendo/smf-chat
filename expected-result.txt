@@ -1,0 +1,136 @@
+-- request username --
+request:
+    GET: username
+    POST: -
+
+response:
+    success:
+        JSON:
+            {
+                "success": true,
+                "name": "name"
+            }
+    failure:
+        JSON:
+            {
+                "success": false,
+                "msg": "errormessage" (empty string to keep the failure silent)
+            }
+
+-- login --
+request:
+    GET: login
+    POST: -
+
+response:
+    success:
+        JSON:
+            {
+                "success": true,
+                "lasteventid": x,
+                "userid": x
+                "session" "hash"
+            }
+    failure:
+        JSON:
+            {
+                "success": false,
+                "msg": "errormessage" (empty string to keep the failure silent)
+            }
+
+-- logout --
+request
+    GET: logout
+    POST:
+        "hash"
+
+response:
+    success:
+        JSON:
+            {
+                "success": true
+            }
+    failure:
+        JSON:
+            {
+                "success": false,
+                "msg": "errormessage" (empty string to keep the failure silent)
+            }
+
+-- request userlist --
+    GET: userlist
+    POST: -
+
+response:
+    success:
+        JSON:
+            {
+                "success": true,
+                "userlist": [
+                    {
+                        "name": "username",
+                        "type": 0~3 (0: user, 1: mod, 2: glob.mod, 3: admin),
+                        "userid": x
+                    },[...]
+                ]
+            }
+    failure:
+        JSON:
+            {
+                "success": false,
+                "msg": "errormessage" (empty string to keep the failure silent)
+            }
+
+-- request update --
+    GET: update
+    POST:
+        "lasteventid" = x
+        "userlist" = boolean
+        "hash"
+
+response:
+    success:
+        JSON:
+            {
+                "success": true,
+                "lasteventid": x,
+                "events": [
+                    {
+                        "userid": 1,
+                        "type": 0~x (0: message, 1: user joined, 2: user left, 3: user timed out, ...)
+                        "content": "string"
+                    },[...],
+                "userlist": [
+                    {
+                        "name": "username",
+                        "type": 0~3 (0: user, 1: mod, 2: glob.mod, 3: admin),
+                        "userid": x
+                        "img": "avatar URL"
+                    },[...]
+                ]
+            }
+    failure:
+        JSON:
+            {
+                "success": false,
+                "msg": "errormessage" (empty string to keep the failure silent)
+            }
+
+-- send message --
+    GET: send
+    POST:
+        "message" = "string"
+        "session" = "hash"
+
+response:
+    success:
+        JSON:
+            {
+                "success": true
+            }
+    failure:
+        JSON:
+            {
+                "success": false,
+                "msg": "errormessage" (empty string to keep the failure silent)
+            }

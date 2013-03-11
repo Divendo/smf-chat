@@ -1,0 +1,593 @@
+/*
+    Jochem Kuijpers - 2013
+    C++Forum Chat
+    http://www.jochemkuijpers.nl/
+    http://www.cppforum.nl/chat
+*/
+
+/*
+    General CSS
+*/
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+html, body, button, input {
+    font: 12px "Verdana", "Arial", "Helvetica", sans-serif;
+}
+* {
+	margin: 0;
+	padding: 0;
+}
+a {
+	color: #0071B7;
+}
+a:hover {
+	color: #004D7C;
+}
+ul {
+	margin-left: 1.5em;
+}
+img {
+	border: none;
+    vertical-align: middle;
+}
+#loadingicon, #doneicon {
+    position: absolute;
+    right: 2px;
+    bottom: 2px;
+}
+
+/*
+    Page layout CSS
+*/
+
+#container {
+	width: 100%;
+	height: 100%;
+	min-height: 320px;
+}
+#header {
+	position: absolute; 
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 86px;
+	background: #FFFFFF url(img/headerbackground.png) scroll repeat-x left bottom;
+}
+#logo {
+	position: absolute;
+	left: 32px;
+	width: 360px;
+	height: 86px;
+	background: transparent url(img/logo.png) scroll no-repeat left top;
+	font-size: 0;
+}
+#leftcontent {
+	position: absolute;
+	top: 86px;
+	bottom: 0;
+	left: 0;
+	right: 241px;
+	min-width: 240px;
+	background: #FFFFFF;
+}
+#rightcontent {
+	position: absolute;
+	top: 86px;
+	bottom: 0;
+	right: 0;
+	width: 240px;
+	background: #E7EAEF;
+	border-left: 1px solid #BBBBBB;
+	max-height: 100%;
+	overflow: auto;
+	overflow-x: hidden;
+}
+#chat, #other {
+	width: 100%;
+	height: 100%;
+}
+
+/*
+    Sidebar CSS
+*/
+
+#togglesidebar {
+	background: transparent url(img/togglesidebar.png) scroll no-repeat left top;
+	position: absolute;
+	right: 24px;
+	bottom: 2px;
+	width: 16px;
+	height: 16px;
+	cursor: pointer;
+	text-align: right;
+	font-size: 0;
+}
+#togglesidebar.toggle {
+	background-position: left bottom;
+}
+
+/*
+    Logout CSS
+*/
+
+#chatlogout {
+	position: absolute;
+	right: 2px;
+	top: 2px;
+	font-size: 85%;
+}
+
+/*
+    Other Content CSS
+*/
+
+.other {
+	min-width: 240px;
+	min-height: 120px;
+    display: block;
+	position: relative;
+	width: 50%;
+    max-width: 720px;
+	margin: auto;
+    top: 4em;
+    padding: 1em;
+	border: 1px solid #BBBBBB;
+	box-shadow: 0 0 8px #80734d;
+}
+.other_title {
+	font-size: 180%;
+	color: #1979B0;
+	border-bottom: 1px solid #09537C;
+	height: 32px;
+	overflow: hidden;
+}
+.other_message {
+	top: 48px;
+	margin: 8px;
+	overflow: hidden;
+	height: auto;
+}
+.other_message p {
+	margin: 1em;
+}
+.other_subtitle {
+    color: #1979B0;
+    font-weight: bold;
+    font-size: 110%;
+    text-align: center;
+    margin: 1.5em;
+}
+
+/*
+    Other Content Error CSS
+*/
+
+#error_title {
+    color: #DD0000 !important;
+    border-bottom: 1px solid #BB0000 !important;
+}
+
+/* 
+    Other Content Welcome CSS
+*/
+
+#loginbutton {
+    outline: 1px solid #BBBBBB;
+    border: 1px solid #FFFFFF;
+	display: block;
+	height: 32px;
+    width: 200px;
+	margin: auto;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+	color: #444444;
+    background: #EEEEEE;
+}
+#loginbutton:hover {
+    background: #F8F8F8;
+	color: #000000;
+}
+#loginuserlist {
+    list-style: none;
+    width: 75%;
+    min-width: 200px;
+    max-width: 400px;
+    outline: 1px solid #BBBBBB;
+    border-bottom: 1px solid #FFFFFF;
+    margin: 8px auto;
+}
+#loginuserlist li {
+    border-top: 1px solid #FFFFFF;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    line-height: 30px;
+    background: #EEEEEE;
+    padding: 0 .5em;
+    text-align: center;
+}
+#loginuserlist li.mod {
+    background: #DDFFDD;
+}
+#loginuserlist li.globmod {
+    background: #DDDDFF;
+}
+#loginuserlist li.admin {
+    background: #FFDDDD;
+}
+#loginloading {
+    float: right;
+}
+
+/*
+    Noscript CSS
+*/
+
+#browsers {
+    text-align: center;
+    margin: 2em 0;
+}
+#browsers div {
+    display: inline-block;
+    width: 19%;
+    min-width: 64px;
+    text-align: center;
+}
+#chrome, #firefox, #msie, #safari, #opera {
+    width: 64px;
+    height: 64px;
+    display: inline-block;
+    font-size: 0%;
+    background: transparent url('img/browsers.png') no-repeat scroll left top;
+}
+#chrome {
+    background-position: 0px -64px;
+}
+#firefox {
+    background-position: 0px 0px;
+}
+#msie {
+    background-position: 0px -128px;
+}
+#safari {
+    background-position: 0px -192px;
+}
+#opera {
+    background-position: 0px -256px;
+}
+
+
+/*
+    Chatbox Layout CSS
+*/
+
+#chatbox {
+	position: absolute;
+	top: 0;
+	bottom:80px;
+	left: 0;
+	right: 0;
+}
+#messages {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	padding: 4px;
+	overflow: auto;
+	overflow-x: hidden; /* only when overflow-x is supported, otherwise will fall back to overflow: auto */
+}
+
+/*
+    Chatbox Elements CSS
+*/
+
+#intro {
+	border-bottom: 1px solid #BBBBBB;
+	margin-bottom: 8px;
+}
+#intro p {
+	margin: 4px;
+}
+#intro .welcome {
+	margin-bottom: 8px;
+	font-size: 110%;
+}
+.smiley {
+	vertical-align: bottom;
+}
+
+/*
+    Chatbox Elements Messages CSS
+*/
+
+.msg_normal {
+	margin-bottom: 4px;
+	margin-left: 4px;
+}
+.msg_normal span {
+	font-size: 90%;
+}
+.msg_info {
+	color: #404040;
+	margin: 2px 4px;
+}
+.msg_alert {
+	margin: 2px 4px;
+}
+.msg_alert span {
+	font-weight: bold;
+	color: #B00000;
+}
+.msg_small {
+	font-size: 90%;
+	color: #000000;
+	font-weight: normal;
+}
+.msg_content {
+	padding-left: 4px;
+}
+.msg_username {
+	color: #404040 !important;
+    font-weight: bold;
+}
+.msg_username_mod {
+	color: #008000 !important;
+	font-weight: bold;
+}
+.msg_username_globmod {
+	color: #000080 !important;
+	font-weight: bold;
+}
+.msg_username_admin {
+	color: #800000 !important;
+	font-weight: bold;
+}
+
+/*
+    Chatbox Elements Icons CSS
+*/
+
+.icon_plus, .icon_min, .icon_alert, .icon_plus_mod, .icon_min_mod, .icon_alert_mod, .icon_plus_globmod, .icon_min_globmod, .icon_alert_globmod, .icon_plus_admin, .icon_min_admin, .icon_alert_admin {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	line-height: 16px;
+	vertical-align: bottom;
+}
+.icon_plus {
+	background: transparent url(img/sprites.png) scroll no-repeat 0px 0px;
+}
+.icon_min {
+	background: transparent url(img/sprites.png) scroll no-repeat -16px 0px;
+}
+.icon_alert {
+	background: transparent url(img/sprites.png) scroll no-repeat -32px 0px;
+}
+.icon_plus_mod {
+	background: transparent url(img/sprites.png) scroll no-repeat 0px -16px;
+}
+.icon_min_mod {
+	background: transparent url(img/sprites.png) scroll no-repeat -16px -16px;
+}
+.icon_alert_mod {
+	background: transparent url(img/sprites.png) scroll no-repeat -32px -16px;
+}
+.icon_plus_globmod {
+	background: transparent url(img/sprites.png) scroll no-repeat 0px -32px;
+}
+.icon_min_globmod {
+	background: transparent url(img/sprites.png) scroll no-repeat -16px -32px;
+}
+.icon_alert_globmod {
+	background: transparent url(img/sprites.png) scroll no-repeat -32px -32px;
+}
+.icon_plus_admin {
+	background: transparent url(img/sprites.png) scroll no-repeat 0px -48px;
+}
+.icon_min_admin {
+	background: transparent url(img/sprites.png) scroll no-repeat -16px -48px;
+}
+.icon_alert_admin {
+	background: transparent url(img/sprites.png) scroll no-repeat -32px -48px;
+}
+
+/*
+    Form CSS
+*/
+
+#formbox {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	height: 80px;
+	background: #E7EAEF;
+	border-top: 1px solid #BBBBBB;
+}
+#chatform {
+	width: 100%;
+	height: 100%;
+}
+#chatinputdiv {
+	position: absolute;
+	top: 2px;
+	bottom: 2px;
+	left: 2px;
+	right: 83px;
+    outline: 1px solid #BBBBBB;
+	border: 1px solid #FFFFFF;
+	padding: 4px;
+    background: #f0f3f6;
+}
+#chatinput {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: none;
+	font: 12px "Verdana","Arial","Helvetica",sans-serif;
+	resize: none;
+	outline: none;
+    background: transparent;
+}
+#chatsubmit {
+	position: absolute;
+	top: 2px;
+	bottom: 2px;
+	right: 2px;
+	width: 78px;
+	outline: 1px solid #BBBBBB;
+    border: 1px solid #FFFFFF;
+	background: #E7EAEF;
+	color: #444444;
+}
+#chatsubmit:hover {
+	background: #FFFFFF;
+	color: #000000;
+}
+
+/*
+    Dialog CSS
+*/
+
+#dialog {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: transparent url(img/dialogbackground.png) repeat scroll top left;
+}
+#dialogbox {
+	position: fixed;
+	left: 50%;
+	top: 30%;
+	background: #FFFFFF;
+	border: 1px solid #999999;
+	width: 360px;
+	margin-left: -180px;
+	margin-top: -50px;
+}
+#dialogheader {
+	width: auto;
+	height: 24px;
+	background: transparent url(img/boxheader.png) repeat-x scroll top left;
+	line-height: 24px;
+	color: #FFFFFF;
+	padding-left: 4px;
+}
+#dialogbody {
+	padding: 8px;
+}
+#dialogbuttons {
+	background: #DDDDDD;
+	height: 36px;
+}
+#dialogyes, #dialogno {
+	outline: 1px solid #BBBBBB;
+    border: 1px solid #FFFFFF;
+	display: block;
+	height: 32px;
+	margin: 1px;
+	position: absolute;
+	line-height: 30px;
+	text-align: center;
+	cursor: pointer;
+	color: #444444;
+    background: #EEEEEE;
+}
+#dialogyes:hover, #dialogno:hover {
+	background: #F8F8F8;
+	color: #000000;
+}
+#dialogyes {
+	left: 0;
+	width: 176px;
+}
+#dialogno {
+	right: 0;
+	width: 177px;
+}
+
+/*
+    Sidebar Elements CSS
+*/
+
+.box {
+	background: #FFFFFF;
+	border-bottom: 1px solid #DDDDDD;
+	margin-bottom: 4px;
+}
+.boxheader {
+	background: #0070B2 url(img/boxheader.png) scroll repeat-x left top;
+	line-height: 24px;
+	height: 24px;
+}
+.boxheader div {
+	padding-left: 4px;
+	color: #FFFFFF;
+}
+.boxbody {
+}
+.user, .user_mod, .user_globmod, .user_admin {
+	width: 100%;
+	height: 36px;
+	border-top: 1px solid #DDDDDD;
+}
+.user_avatar {
+	display: block;
+	width: 32px;
+	height: 32px;
+	border: 1px solid #DDDDDD;
+	margin: 1px;
+	float: left;
+	background: #FFFFFF url(img/avatar.png) scroll no-repeat left top;
+}
+.user_avatar img{
+	width: 32px;
+	height: 32px;
+	background: #FFFFFF;
+}
+.user_name {
+	display: inline-block;
+	background: #FFFFFF;
+	border: 1px solid #DDDDDD;
+	margin: 1px;
+	position: absolute;
+	left: 35px;
+	right: 0px;
+	height: 32px;
+	line-height: 32px;
+	padding-left: 4px;
+}
+.user_mod div.user_name {
+	background: #DDFFDD;
+	border: 1px solid #CCDDCC;
+}
+.user_globmod div.user_name {
+	background: #DDDDFF;
+	border: 1px solid #CCCCDD;
+}
+.user_admin div.user_name {
+	background: #FFDDDD;
+	border: 1px solid #DDCCCC;
+}
+.user_profile {
+	float: right;
+}
+
+/*
+    Boxshadow CSS
+*/
+
+.boxshadow-large {
+	box-shadow: inset 0 0 4px #80734d;
+}
+.boxshadow {
+	box-shadow: inset 0 0 1px #80734d;
+}
